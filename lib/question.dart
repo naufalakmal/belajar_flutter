@@ -4,9 +4,17 @@ class Question extends StatelessWidget {
   final String qeustionText;
 
   Question(this.qeustionText);
-  
+
   @override
   Widget build(BuildContext context) {
-    return Text(qeustionText);
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.all(10),
+      child: Text(
+        qeustionText,
+        style: TextStyle(fontSize: 28),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
