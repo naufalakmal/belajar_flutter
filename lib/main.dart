@@ -13,26 +13,40 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
-      'questionText': 'Apa warna favorit kamu : ',
-      'answers': ['Hitam', 'Putih', 'Hijau', 'Biru'],
-    },
-    {
-      'questionText': 'Apa makanan kesukaan kamu : ',
-      'answers': ['Bakso', 'Soto', 'Tom Yam', 'Ramen'],
-    },
-    {
-      'questionText': 'Tokoh favorit kamu di perang dunia ke 2 adalah : ',
+      'questionText': 'Tools terbaik untuk UI/UX Design : ',
       'answers': [
-        'Adolf Hitler',
-        'Joseph Stalin',
-        'Winston Churchill',
-        'Benitto Mussolini'
+        {'text': 'Figma', 'score': 30},
+        {'text': 'Adobe XD', 'score': 15},
+        {'text': 'Framer', 'score': 5},
+        {'text': 'Canva', 'score': 0}
+      ],
+    },
+    {
+      'questionText':
+          'Dibawah ini manakah yang bukan termasuk tipe data primitif : ',
+      'answers': [
+        {'text': 'byte', 'score': 0},
+        {'text': 'string', 'score': 35},
+        {'text': 'int', 'score': 0},
+        {'text': 'double', 'score': 0}
+      ],
+    },
+    {
+      'questionText':
+          'Tokoh terkenal yang terjadi pada perang dunia ke 2 adalah : ',
+      'answers': [
+        {'text': 'Douglas Haig', 'score': 0},
+        {'text': 'Vladimir Puttin', 'score': 0},
+        {'text': 'Enver Pasha', 'score': 0},
+        {'text': 'Joseph Stallin', 'score': 35}
       ],
     },
   ];
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -41,11 +55,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    // Const dapat digunakan untuk deklarasi variabel immutable yang nilainya bersifat konstan dan harus sudah diketahui pada saat waktu kompilasi (Compile time) berjalan, artinya adalah nilai dari variabel tersebut harus sudah di berikan value secara langsung.
-    // .map buat array baru tidak seperti .add
-    // additional
-    // https://belajarflutter.com/perbedaan-final-dan-const-pada-dart-dan-flutter/#:~:text=Perbedaan%20utama%20ada%20pada%20inialisasi,final%20tidak%20mengharuskan%20variabel%20memiliki
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -58,7 +67,6 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
               )
             : Result(),
-        // Invisible layout
       ),
     );
   }
